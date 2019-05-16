@@ -1,0 +1,47 @@
+@import '../../variables.scss';
+
+.menu {
+  width: 240px;
+  box-sizing: border-box;
+  background: $gray-100;
+  position: relative;
+  margin: 0;
+  
+  & ul {
+    margin: 0;
+    padding: 16px;
+    list-style: none;
+  }
+
+  & .logo {
+    margin: 12px 16px 12px 0;
+    padding: 8px;
+    background: white;
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
+  }
+}
+
+.menu-item {
+  padding: 8px 16px;
+  margin-top: 4px;
+  border-radius: 4px;
+
+  &:hover {
+    background: rgba($primary, .08);
+  }
+  
+  &.active {
+    background: rgba($primary, .12);
+    color: $primary;
+  }
+
+  span {
+    padding-left: 16px;
+    font: 14px/22px 'PT Root UI';
+  }
+
+  i {
+    vertical-align: middle;
+  }
+}
