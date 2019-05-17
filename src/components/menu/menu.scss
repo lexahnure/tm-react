@@ -2,46 +2,113 @@
 
 .menu {
   width: 240px;
+  height: 100vh;
   box-sizing: border-box;
   background: $gray-100;
   position: relative;
   margin: 0;
+  display: inline-block;
+  transition: all .3s ease-out;
   
-  & ul {
+  &.minimized {
+    width: 88px;
+    .logo {
+      margin: 12px 20px 12px 20px;
+      border-radius: 24px;
+      background: transparent;
+      span {
+        width: 32px;
+        min-width: 32px;
+      }
+    }
+    .minimize {
+      left: 68px;
+      z-index: 100;
+    }
+  }
+
+  .minimize {
+    position: absolute;
+    padding: 4px;
+    top: 20px;
+    left: 184px;
+    transition: all .3s ease-out;
+  }
+
+  ul {
     margin: 0;
     padding: 16px;
     list-style: none;
   }
 
-  & .logo {
+  .logo {
+    display: flex;
     margin: 12px 16px 12px 0;
     padding: 8px;
     background: white;
     border-top-right-radius: 24px;
     border-bottom-right-radius: 24px;
+    justify-content: space-between;
+    align-items: center;
+    transition: all .2s ease-out;
+    
+    span {
+      overflow: hidden;
+      width: 100%;
+      img {
+        display: block;
+      }
+    }
   }
 }
 
 .menu-item {
-  padding: 8px 16px;
-  margin-top: 4px;
-  border-radius: 4px;
-
-  &:hover {
-    background: rgba($primary, .08);
-  }
   
-  &.active {
-    background: rgba($primary, .12);
-    color: $primary;
-  }
+  a {
+    display: flex;
+    padding: 8px 16px;
+    margin-top: 4px;
+    border-radius: 4px;
+    color: black;
+    text-decoration: none;
+    overflow: hidden;
+    
+    &:hover {
+      background: rgba($primary, .08);
+    }
 
-  span {
-    padding-left: 16px;
-    font: 14px/22px 'PT Root UI';
+    &.active {
+      background: rgba($primary, .12);
+      color: $primary;
+    }
+    span {
+      padding-left: 16px;
+      transition: all .3s ease-out;
+    }
   }
 
   i {
     vertical-align: middle;
   }
+
+}
+
+.btn {
+  display: flex;
+  position: relative;
+  outline: none;
+}
+
+.btn-ghost {
+  background: white;
+  border: 1px solid $gray-300;
+}
+
+.btn-icon {
+  box-sizing: border-box;
+  padding: 8px;
+}
+
+.btn-round {
+  border-radius: 50%;
 }
