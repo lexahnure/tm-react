@@ -16,6 +16,8 @@
       margin: 12px 20px 12px 20px;
       border-radius: 24px;
       background: transparent;
+      padding: 8px;
+      
       span {
         width: 32px;
         min-width: 32px;
@@ -24,6 +26,18 @@
     .minimize {
       left: 68px;
       z-index: 100;
+    }
+    .control-buttons {
+      flex-direction: column;
+    }
+
+    .btn-start, .btn-stop {
+      padding: 8px 0 8px 0;
+      width: 40px;
+      margin: 0 auto;
+    }
+    .btn-start {
+      margin-bottom: 16px;
     }
   }
 
@@ -44,7 +58,7 @@
   .logo {
     display: flex;
     margin: 12px 16px 12px 0;
-    padding: 8px;
+    padding: 8px 16px;
     background: white;
     border-top-right-radius: 24px;
     border-bottom-right-radius: 24px;
@@ -93,10 +107,18 @@
 
 }
 
+.control-buttons {
+  display: flex;
+  padding: 16px;
+}
+
 .btn {
   display: flex;
   position: relative;
   outline: none;
+  align-items: center;
+  transition: all .2s ease-out;
+  font: 15px/20px 'PT Root UI';
 }
 
 .btn-ghost {
@@ -111,4 +133,51 @@
 
 .btn-round {
   border-radius: 50%;
+}
+
+.btn-start {
+  background: $success;
+  border: none;
+  color: white;
+  padding: 8px 0 8px 4px;
+  border-radius: 20px;
+  width: 100px;
+  margin-right: 16px;
+  overflow: hidden;
+
+  i {
+    margin-right: 8px;
+    margin-left: 8px;
+  }
+
+  &:hover {
+    background: lighten($success, 4%);
+  }
+
+  &:disabled {
+    background: rgba(0,0,0, .12);
+  }
+}
+
+.btn-stop {
+  background: $warning;
+  border: none;
+  color: white;
+  padding: 8px 0 8px 4px;
+  border-radius: 20px;
+  width: 100px;
+  overflow: hidden;
+
+  i {
+    margin-right: 8px;
+    margin-left: 8px;
+  }
+
+  &:hover {
+    background: lighten($warning, 4%);
+  }
+
+  &:disabled {
+    background: rgba(0,0,0, .12);
+  }
 }

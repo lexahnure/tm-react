@@ -6,7 +6,7 @@ import MenuItem from './components/menu/index';
 const itemsList=[
   {
     icon: 'face',
-    text: 'Android',
+    text: 'Face',
     address: 'face'
   },
   {
