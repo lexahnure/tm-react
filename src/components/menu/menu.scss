@@ -23,10 +23,12 @@
         min-width: 32px;
       }
     }
+
     .minimize {
       left: 68px;
       z-index: 100;
     }
+
     .control-buttons {
       flex-direction: column;
     }
@@ -36,6 +38,7 @@
       width: 40px;
       margin: 0 auto;
     }
+
     .btn-start {
       margin-bottom: 16px;
     }
@@ -135,49 +138,38 @@
   border-radius: 50%;
 }
 
-.btn-start {
-  background: $success;
+.btn-start, .btn-stop {
   border: none;
   color: white;
   padding: 8px 0 8px 4px;
-  border-radius: 20px;
   width: 100px;
-  margin-right: 16px;
+  border-radius: 20px;
   overflow: hidden;
+  
+  &:disabled {
+    background: rgba(0,0,0, .12);
+  }
 
   i {
     margin-right: 8px;
     margin-left: 8px;
   }
 
+}
+
+.btn-start {
+  background: $success;
+  margin-right: 16px;
+
   &:hover {
     background: lighten($success, 4%);
-  }
-
-  &:disabled {
-    background: rgba(0,0,0, .12);
   }
 }
 
 .btn-stop {
   background: $warning;
-  border: none;
-  color: white;
-  padding: 8px 0 8px 4px;
-  border-radius: 20px;
-  width: 100px;
-  overflow: hidden;
-
-  i {
-    margin-right: 8px;
-    margin-left: 8px;
-  }
 
   &:hover {
     background: lighten($warning, 4%);
-  }
-
-  &:disabled {
-    background: rgba(0,0,0, .12);
   }
 }

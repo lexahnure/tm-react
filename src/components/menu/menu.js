@@ -24,15 +24,15 @@ class MenuItem extends React.Component {
           </span>
         </div>
         <button type="button" className="btn btn-ghost btn-icon btn-round minimize" onClick={this.minimizeHandler}>
-          <i class="material-icons">{ minimized ? 'chevron_right' : 'chevron_left' }</i>
+          <i className="material-icons">{ minimized ? 'chevron_right' : 'chevron_left' }</i>
         </button>
         <div className="control-buttons">
           <button type="button" className="btn btn-start">
-            <i class="material-icons">play_arrow</i>
+            <i className="material-icons">play_arrow</i>
             <span>Start</span>
           </button>
-          <button type="button" className="btn btn-stop" disabled="true">
-            <i class="material-icons">stop</i>
+          <button type="button" className="btn btn-stop" disabled={true}>
+            <i className="material-icons">stop</i>
             <span>Stop</span>
           </button>
         </div>

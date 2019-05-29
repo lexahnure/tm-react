@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router } from "react-router-dom";
 import './App.scss';
 import MenuItem from './components/menu/index';
+import SecondMenu from './components/secondMenu/index';
 
 const itemsList=[
   {
@@ -21,6 +22,7 @@ function App() {
     <div className="App">
       <Router>
         <MenuItem itemsList={itemsList}/>
+        <SecondMenu itemsList={itemsList}/>
       </Router>
     </div>
   );
