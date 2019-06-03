@@ -1,0 +1,128 @@
+@import '../../variables.scss';
+
+@mixin appearance($color, $outline: true) {
+  @if $outline {
+    border-color: $color;
+    background-color: transparent;
+    color: darken($color, 12%);
+
+    &:hover {
+      background-color: rgba($color, .12);
+    }
+    &:active {
+      background-color: rgba($color, .24);
+    }
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba($color, .32);
+    }
+
+    @if $color == $gray-300 {
+      color: $gray-800;
+      &:hover {
+        background-color: rgba($color, .36);
+      }
+      &:active {
+        background-color: rgba($color, .72);
+      }
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba($color, .48);
+      }
+    }
+
+  } @else {
+    color: white;
+    background-color: $color;
+    border-color: transparent;
+    &:hover {
+      background-color: lighten($color, 6%);
+    }
+    &:active {
+      background-color: darken($color, 12%);
+    }
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba($color, .32);
+    }
+
+    @if $color == $gray-200 {
+      color: $gray-800;
+      &:hover {
+        background-color: lighten($color, 3%);
+      }
+      &:active {
+        background-color: darken($color, 8%);
+      }
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba($color, .48);
+      }
+    }
+  }
+}
+
+.button {
+  display: inline-block;
+  box-sizing: border-box;
+  height: 100%;
+  font: 14px/20px 'PT Root UI';
+  margin: 0;
+  padding: 0 16px;
+  height: 40px;
+  border: 1px solid;
+  border-radius: 6px;
+
+  &:not(:last-of-type) {
+    margin-right: 16px;
+  }
+  
+  &.primary {
+    @include appearance($primary, $outline: false);
+  }
+  
+  &.primary-outline {
+    @include appearance($primary, $outline: true);
+  }
+
+  &.success {
+    @include appearance($success, $outline: false);
+  }
+  
+  &.success-outline {
+    @include appearance($success, $outline: true);
+  }
+
+  &.warning {
+    @include appearance($warning, $outline: false);
+  }
+  
+  &.warning-outline {
+    @include appearance($warning, $outline: true);
+  }
+
+  &.danger {
+    @include appearance($danger, $outline: false);
+  }
+  
+  &.danger-outline {
+    @include appearance($danger, $outline: true);
+  }
+
+  &.info {
+    @include appearance($info, $outline: false);
+  }
+  
+  &.info-outline {
+    @include appearance($info, $outline: true);
+  }
+
+  &.secondary {
+    @include appearance($gray-200, $outline: false);
+  }
+  
+  &.secondary-outline {
+    @include appearance($gray-300, $outline: true);
+  }
+  
+}

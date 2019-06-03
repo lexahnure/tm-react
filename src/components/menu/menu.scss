@@ -121,7 +121,7 @@
   outline: none;
   align-items: center;
   transition: all .2s ease-out;
-  font: 15px/20px 'PT Root UI';
+  font: 14px/20px 'PT Root UI';
 }
 
 .btn-ghost {
@@ -167,9 +167,9 @@
 }
 
 .btn-stop {
-  background: $warning;
+  background: $danger;
 
   &:hover {
-    background: lighten($warning, 4%);
+    background: lighten($danger, 4%);
   }
 }
