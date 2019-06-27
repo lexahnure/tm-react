@@ -1,128 +1,134 @@
 @import '../../variables.scss';
 
-@mixin appearance($color, $outline: true) {
-  @if $outline {
-    border-color: $color;
-    background-color: transparent;
-    color: darken($color, 12%);
-
-    &:hover {
-      background-color: rgba($color, .12);
-    }
-    &:active {
-      background-color: rgba($color, .24);
-    }
-    &:focus {
-      outline: none;
-      box-shadow: 0 0 0 2px rgba($color, .32);
-    }
-
-    @if $color == $gray-300 {
-      color: $gray-800;
-      &:hover {
-        background-color: rgba($color, .36);
-      }
-      &:active {
-        background-color: rgba($color, .72);
-      }
-      &:focus {
-        outline: none;
-        box-shadow: 0 0 0 2px rgba($color, .48);
-      }
-    }
-
-  } @else {
-    color: white;
-    background-color: $color;
-    border-color: transparent;
-    &:hover {
-      background-color: lighten($color, 6%);
-    }
-    &:active {
-      background-color: darken($color, 12%);
-    }
-    &:focus {
-      outline: none;
-      box-shadow: 0 0 0 2px rgba($color, .32);
-    }
-
-    @if $color == $gray-200 {
-      color: $gray-800;
-      &:hover {
-        background-color: lighten($color, 3%);
-      }
-      &:active {
-        background-color: darken($color, 8%);
-      }
-      &:focus {
-        outline: none;
-        box-shadow: 0 0 0 2px rgba($color, .48);
-      }
-    }
+@mixin appearance($color) {
+  background: $color;
+  color: white;
+  &:hover {
+    background: lighten($color, 5%);
+  }
+  &:active {
+    background: darken($color, 5%);
+  }
+  &:focus {
+    box-shadow: 0 0 0 2px adjust-color($color, $saturation: -4%, $alpha: -.72);
   }
 }
 
+@mixin appearance-outline($color) {
+  color: adjust-color($color, $saturation: -8%, $lightness: -12%);
+  border-color: $color;
+  &:hover {
+    background: transparentize($color, .92);
+  }
+  &:active {
+    background: adjust-color($color, $saturation: -4%, $lightness: -8%, $alpha: -.8);
+  }
+}
+
+
 .button {
-  display: inline-block;
+  display: inline-flex;
   box-sizing: border-box;
   height: 100%;
-  font: 14px/20px 'PT Root UI';
-  margin: 0;
+  font: 14px/22px 'PT Root UI';
+  font-weight: 500;
+  margin: 4px 0;
   padding: 0 16px;
   height: 40px;
-  border: 1px solid;
-  border-radius: 6px;
+  background: $grey-300;
+  border: 0px solid transparent;
+  border-radius: $radius;
+  outline: none;
+  vertical-align: middle;
+  transition: all .2s ease-out;
+
+  &:hover {
+    background: lighten($grey-300, 4%);
+  }
+  &:active {
+    background: darken($grey-300, 4%);
+  }
+  &:focus {
+    box-shadow: 0 0 0 2px adjust-color($grey-300, $saturation: -4%, $alpha: -.40);
+  }
+  
 
   &:not(:last-of-type) {
-    margin-right: 16px;
+    margin-right: 12px;
   }
+  
   
   &.primary {
-    @include appearance($primary, $outline: false);
-  }
-  
-  &.primary-outline {
-    @include appearance($primary, $outline: true);
-  }
-
-  &.success {
-    @include appearance($success, $outline: false);
-  }
-  
-  &.success-outline {
-    @include appearance($success, $outline: true);
+    @include appearance($primary);
+    &.outline {
+      @include appearance-outline($primary);
+    }
   }
 
   &.warning {
-    @include appearance($warning, $outline: false);
-  }
-  
-  &.warning-outline {
-    @include appearance($warning, $outline: true);
+    @include appearance($warning);
+    &.outline {
+      @include appearance-outline($warning);
+    }
   }
 
   &.danger {
-    @include appearance($danger, $outline: false);
+    @include appearance($danger);
+    &.outline {
+      @include appearance-outline($danger);
+    }
   }
-  
-  &.danger-outline {
-    @include appearance($danger, $outline: true);
+
+  &.success {
+    @include appearance($success);
+    &.outline {
+      @include appearance-outline($success);
+    }
   }
 
   &.info {
-    @include appearance($info, $outline: false);
-  }
-  
-  &.info-outline {
-    @include appearance($info, $outline: true);
+    @include appearance($info);
+    &.outline {
+      @include appearance-outline($info);
+    }
   }
 
-  &.secondary {
-    @include appearance($gray-200, $outline: false);
+  &.outline {
+    color: $grey-800;
+    border: 1px solid $grey-400;
+    background: transparent;
+    &:hover {
+      background: transparentize($grey-300, .64);
+    }
+    &:active {
+      background: transparentize($grey-300, .24);
+    }
+  }
+
+  &.ghost {
+    border: none;
+    background: transparent;
+    color: $primary;
+
+    &:hover {
+      background: transparentize($primary, .88);
+    }
+    &:active {
+      background: transparentize($primary, .80);
+    }
+    &:focus {
+      box-shadow: 0 0 0 2px adjust-color($primary, $saturation: -4%, $alpha: -.64);
+    }
   }
   
-  &.secondary-outline {
-    @include appearance($gray-300, $outline: true);
+  .material-icons {
+    vertical-align: middle;
+    &.before {
+      padding: 0 8px 0 0;
+    }
+    &.after {
+      padding: 0 0 0 8px;
+    }
   }
   
 }

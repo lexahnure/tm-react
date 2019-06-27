@@ -1,0 +1,69 @@
+@import '../../variables.scss';
+
+.dropdown-menu {
+  position: absolute;
+  padding: 12px;
+  border-radius: $radius;
+  visibility: hidden;
+  transform-origin: top center;
+  animation: collapsing .12s ease-out 1 normal;
+  @include shadow-lvl-2;
+
+  &.shown {
+    visibility: visible;
+    animation: expanding .12s ease-out 1 normal;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+    li {
+      cursor: default;
+      padding: 8px;
+      border-radius: $radius;
+      transition: background .16s ease-out;
+      &:hover {
+        background: $grey-100;
+      }
+    }
+  }
+  .list-title {
+    font-size: 12px;
+    line-height: 16px;
+    color: $grey-600;
+    text-transform: uppercase;
+    margin: 4px 0;
+  }
+}
+
+@keyframes expanding {
+  from {
+    transform: scaleY(.8) translateY(-24px);
+    visibility: hidden;
+    color: transparent;
+    opacity: 0;
+  }
+
+  to {
+    transform: scaleY(1) translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes collapsing {
+  from {
+    transform: scaleY(1) translateY(0);
+    visibility: visible;
+    opacity: 1;
+  }
+
+  to {
+    transform: scaleY(0.8) translateY(-24px);
+    opacity: 0;
+    visibility: hidden;
+  }
+
+}

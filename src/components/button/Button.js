@@ -6,26 +6,54 @@ class Button extends React.Component {
 
   getClass = () => {
     const { appearance } = this.props;
-    if (appearance.includes('outline')) {
-      return (
-        appearance.includes('primary') ? 'primary-outline'
-      : appearance.includes('success') ? 'success-outline'
-      : appearance.includes('warning') ? 'warning-outline'
-      : appearance.includes('danger') ? 'danger-outline'
-      : appearance.includes('info') ? 'info-outline'
-      : 'secondary-outline'
-      )
-    }
 
-    if (!appearance.includes('outline')) {
+    if (appearance) {
       return (
         appearance.includes('primary') ? 'primary'
       : appearance.includes('success') ? 'success'
       : appearance.includes('warning') ? 'warning'
       : appearance.includes('danger') ? 'danger'
       : appearance.includes('info') ? 'info'
-      : 'secondary'
-      )
+      : appearance.includes('ghost') ? 'ghost'
+      : ''
+      );
+    }
+    return '';
+  }
+
+  isOutline = () => {
+    const { appearance } = this.props;
+    if (appearance && appearance.includes('outline')) {
+      return 'outline';
+    }
+    return '';
+  }
+
+  hasAnIcon = () => {
+    const { icon } = this.props;
+
+    if (icon) {
+      return  (
+        <i className="material-icons before">{ icon }</i>
+      );
+    }
+  }
+
+  hasAnIconAfter = () => {
+    const { iconAfter } = this.props;
+
+    if (iconAfter) {
+      return  (
+        <i className="material-icons after">{ iconAfter }</i>
+      );
+    }
+  }
+
+  handleClick = () => {
+    const { click } = this.props;
+
+    if (click) {
+      return  click();
     }
   }
 
@@ -33,8 +61,10 @@ class Button extends React.Component {
     const { text } = this.props;
 
     return (
-      <button type="button" className={`button ${this.getClass()}`}>
+      <button type="button" className={`button ${this.getClass()} ${this.isOutline()}`} onClick={() => this.handleClick()}>
+        { this.hasAnIcon() }
         { text ? text : 'Button' }
+        { this.hasAnIconAfter() }
       </button>
     )
   }
